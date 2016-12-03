@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Popcorn Time</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="order_pref_title">Order Type</string>
+    <string name="order_pref_default">pop</string>
+    <string name="order_pref_key">ordering</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
