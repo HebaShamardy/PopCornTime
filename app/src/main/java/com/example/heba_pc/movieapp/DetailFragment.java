@@ -91,17 +91,35 @@ public class DetailFragment extends Fragment
         TextView plot = (TextView) view.findViewById(R.id.plot);
         TextView date = (TextView) view.findViewById(R.id.release_date);
         TextView rate = (TextView) view.findViewById(R.id.rating);
-        Intent details = getActivity().getIntent();
-        String imageUrl = details.getStringExtra("image");
+        String hostActivity = getActivity().getClass().getSimpleName();
+        String favour = "false";
+        if(hostActivity.equals("MainActivity")) {
+            Bundle bundle=getArguments();
 
+            favour = bundle.getString("Favourite");
 
-        movie.setImageUrl(imageUrl);
-        movie.setId(details.getIntExtra("id" , 0));
-        movie.setTitle(details.getStringExtra("title"));
-        movie.setPlot(details.getStringExtra("plot"));
-        movie.setReleaseDate(details.getStringExtra("date"));
-        movie.setRating(details.getDoubleExtra("rate" , 0.0));
-        Picasso.with(getActivity()).load(imageUrl).placeholder(R.drawable.placeholder_img).into(poster);
+            movie.setImageUrl(bundle.getString("image"));
+            movie.setId(bundle.getInt("id", 0));
+            movie.setTitle(bundle.getString("title"));
+            movie.setPlot(bundle.getString("plot"));
+            movie.setReleaseDate(bundle.getString("date"));
+            movie.setRating(bundle.getDouble("rate", 0.0));
+
+        }
+        else
+        {
+            Intent details = getActivity().getIntent();
+            String imageUrl = details.getStringExtra("image");
+            favour = details.getStringExtra("Favourite");
+
+            movie.setImageUrl(imageUrl);
+            movie.setId(details.getIntExtra("id", 0));
+            movie.setTitle(details.getStringExtra("title"));
+            movie.setPlot(details.getStringExtra("plot"));
+            movie.setReleaseDate(details.getStringExtra("date"));
+            movie.setRating(details.getDoubleExtra("rate", 0.0));
+        }
+        Picasso.with(getActivity()).load(movie.getImageUrl()).placeholder(R.drawable.placeholder_img).into(poster);
         SpannableStringBuilder ssb = new SpannableStringBuilder("");
         SpannableString ss = new SpannableString("Title");
         ss.setSpan(new StyleSpan(Typeface.BOLD) , 0, ss.length() , 0);
@@ -128,11 +146,11 @@ public class DetailFragment extends Fragment
         ssb.append(":  " + rating);
         rate.setText(ssb);
         ToggleButton favouriteButton = (ToggleButton) view.findViewById(R.id.fav_button);
-        String favour = details.getStringExtra("Favourite");
-        if(favour.equals("true")) {
+
+        if(favour!=null && favour.equals("true")) {
             favouriteButton.setChecked(true);
         }
-        else
+        else if(favour!=null)
         {
             favouriteButton.setChecked(false);
             getTrailersReviews(Integer.toString(movie.getId()));
