@@ -163,7 +163,7 @@ public class MoviePostersFragment extends Fragment {
 
         @Override
         protected  ArrayList<Movie> doInBackground(String... params) {
-            final String apiKey = "23386b0753dd348bcb87ab9f516da5d5";
+            final String apiKey = "";
             HttpURLConnection movieDbConnection = null;
             BufferedReader reader = null;
             String resultString = null;

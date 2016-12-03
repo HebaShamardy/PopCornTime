@@ -246,7 +246,7 @@ public class DetailFragment extends Fragment
 
         @Override
         protected ArrayList<Review> doInBackground(String... params) {
-            final String apiKey = "23386b0753dd348bcb87ab9f516da5d5";
+            final String apiKey = "";
             HttpURLConnection movieDbConnection = null;
             BufferedReader reader = null;
             reviewResultString= null;
@@ -349,7 +349,7 @@ public class DetailFragment extends Fragment
 
         @Override
         protected ArrayList<Trailer> doInBackground(String... params) {
-            final String apiKey = "23386b0753dd348bcb87ab9f516da5d5";
+            final String apiKey = "";
             HttpURLConnection movieDbConnection = null;
             BufferedReader reader = null;
             trailerResultString = null;
