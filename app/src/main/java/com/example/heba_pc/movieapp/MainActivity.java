@@ -15,10 +15,10 @@ public class MainActivity extends AppCompatActivity implements MovieListner{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        MoviePostersFragment postersViewFrag = new MoviePostersFragment();
+        postersViewFrag.setMovieListner(this);
         if(savedInstanceState == null){
-            MoviePostersFragment postersViewFrag = new MoviePostersFragment();
-            postersViewFrag.setMovieListner(this);
+
             getSupportFragmentManager().beginTransaction().add(R.id.main , postersViewFrag).commit();
         }
 

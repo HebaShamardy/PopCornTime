@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_detail"
@@ -17,13 +16,28 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        <ImageView
+        <LinearLayout
             android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+            <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/movie_image"
             android:layout_gravity="left"
             />
+            <ToggleButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fav_button"
+                android:layout_weight="1"
+                android:background="@drawable/favourite_checker"
+                android:textOff=""
+                android:textOn=""
+                />
+        </LinearLayout>
         <LinearLayout
             android:layout_weight="3"
             android:layout_width="wrap_content"
@@ -43,34 +57,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rating"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/plot"
+                android:layout_marginTop="5dp"/>
         </LinearLayout>
-        <ToggleButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/fav_button"
-            android:layout_weight="1"
-            android:background="@drawable/favourite_checker"
-            android:textOff=""
-            android:textOn=""
-            />
+
 
     </LinearLayout>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/plot"
-        android:layout_marginTop="20dp"/>
 
     <ExpandableListView
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:id="@+id/expandable_list"
         android:groupIndicator="@drawable/indicator_selector"
-        android:divider="@android:color/black"
+        android:divider="@android:color/holo_blue_light"
         android:dividerHeight="0.8dp"/>
+
 
 
 
